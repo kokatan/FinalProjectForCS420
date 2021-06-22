@@ -41,9 +41,9 @@ namespace FinalProject420
         {
             using (SolidBrush b = new SolidBrush(color))
             {
-                foreach (Rectangle r in rectList)
+                foreach (Rectangle r in GetRectList())
                 {
-                    g.FillEllipse(b, new Rectangle(pos.X + r.Left, pos.Y + r.Top, r.Width - 1, r.Height - 1));
+                    g.FillRectangle(b, new Rectangle(r.Left, r.Top, r.Width - 1, r.Height - 1));
                 }
             }
 
@@ -66,6 +66,16 @@ namespace FinalProject420
                 newPos.Y = fieldSize.Height - height;
             }
             pos = newPos;
+        }
+
+        public List<Rectangle> GetRectList()
+        {
+            List<Rectangle> drawRectList = new List<Rectangle>();
+            foreach(Rectangle r in rectList)
+            {
+                drawRectList.Add(new Rectangle(pos.X + r.Left, pos.Y + r.Top, r.Width, r.Height));
+            }
+            return drawRectList;
         }
     }
 }

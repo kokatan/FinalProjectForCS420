@@ -37,20 +37,25 @@ namespace FinalProject420
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
-            if(blockList.Count > 0)
+            if (blockList.Count > 0)
             {
                 Block lastBlock = blockList.Last();
-                lastBlock.Update(pictureBox1.Height);
+
+                if(GetTouchBlock(lastBlock)[0] == false)
+                {
+                    lastBlock.Update(pictureBox1.Height);
+                }
+                else
+                {
+                    lastBlock.isFalled = true;
+                }
 
                 if (lastBlock.isFalled)
                 {
                     AddBlock();
                 }
             }
-            foreach (Block b in blockList)
-            {
-                b.Update(pictureBox1.Height);
-            }
+
         }
 
         private void drawTimer_Tick(object sender, EventArgs e)
@@ -102,10 +107,10 @@ namespace FinalProject420
         Window = System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if(blockList.Count > 0)
+            if (blockList.Count > 0)
             {
                 Block lastBlock = blockList.Last();
-                if((keyData & Keys.KeyCode) == Keys.Down)
+                if ((keyData & Keys.KeyCode) == Keys.Down)
                 {
                     lastBlock.Move(new Point(0, 10), pictureBox1.Size);
                 }
@@ -117,9 +122,42 @@ namespace FinalProject420
                 {
                     lastBlock.Move(new Point(10, 10), pictureBox1.Size);
                 }
-        
+
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private bool[] GetTouchBlock(Block block)
+        {
+            bool[] isTouchArray = new bool[] { false, false, false };
+            List<Rectangle> rectList1 = block.GetRectList();
+
+            foreach(Block b in blockList)
+            {
+                if(b != block)
+                {
+                    List<Rectangle> rectList2 = b.GetRectList();
+                    foreach (Rectangle rect in rectList1)
+                    {
+                        //Bottom
+                        if (rectList2.Exists(r => rect.Left == r.Left && rect.Bottom == r.Top))
+                        {
+                            isTouchArray[0] = true;
+                        }
+                        //Left
+                        if (rectList2.Exists(r => rect.Left == r.Right && rect.Top == r.Top))
+                        {
+                            isTouchArray[1] = true;
+                        }
+                        //Right
+                        if (rectList2.Exists(r => rect.Right == r.Left && rect.Top == r.Top))
+                        {
+                            isTouchArray[2] = true;
+                        }
+                    } 
+                }
+            }
+            return isTouchArray; 
         }
     }
 }
