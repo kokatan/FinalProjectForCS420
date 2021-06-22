@@ -7,26 +7,19 @@ using System.Threading.Tasks;
 
 namespace FinalProject420
 {
-    class Block
+    abstract class Block
     {
 
-        List<Rectangle> rectList;
-        Point pos;
-        int width;
-        int height;
-        bool isFalled;
+        public List<Rectangle> rectList;
+        public Point pos;
+        public int width;
+        public int height;
+        public bool isFalled;
+        public Color color;
 
         public Block()
         {
-            rectList = new List<Rectangle>
-            {
-                new Rectangle(0, 0, 10, 10),
-                new Rectangle(10, 0, 10, 10),
-                new Rectangle(10, 10, 10, 10),
-                new Rectangle(20, 10, 10, 10)
-            };
-            width = 30;
-            height = 20;
+
         }
 
         public void Update(int fieldHeight)
@@ -46,10 +39,14 @@ namespace FinalProject420
 
         public void Draw(Graphics g)
         {
-            foreach (Rectangle r in rectList)
+            using (SolidBrush b = new SolidBrush(color))
             {
-                g.FillEllipse(Brushes.Red, new Rectangle(pos.X + r.Left, pos.Y + r.Top, r.Width - 1, r.Height - 1));
+                foreach (Rectangle r in rectList)
+                {
+                    g.FillEllipse(b, new Rectangle(pos.X + r.Left, pos.Y + r.Top, r.Width - 1, r.Height - 1));
+                }
             }
+
 
         }
     }
