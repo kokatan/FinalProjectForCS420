@@ -107,15 +107,15 @@ namespace FinalProject420
                 Block lastBlock = blockList.Last();
                 if((keyData & Keys.KeyCode) == Keys.Down)
                 {
-                    lastBlock.Move(new Point(0, 10));
+                    lastBlock.Move(new Point(0, 10), pictureBox1.Size);
                 }
                 else if ((keyData & Keys.KeyCode) == Keys.Left)
                 {
-                    lastBlock.Move(new Point(-10, 0));
+                    lastBlock.Move(new Point(-10, 0), pictureBox1.Size);
                 }
                 else if ((keyData & Keys.KeyCode) == Keys.Right)
                 {
-                    lastBlock.Move(new Point(10, 10));
+                    lastBlock.Move(new Point(10, 10), pictureBox1.Size);
                 }
         
             }

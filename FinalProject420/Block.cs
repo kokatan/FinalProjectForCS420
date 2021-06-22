@@ -50,9 +50,22 @@ namespace FinalProject420
 
         }
 
-        public void Move(Point offset)
+        public void Move(Point offset, Size fieldSize)
         {
-            pos = new Point(pos.X + offset.X, pos.Y + offset.Y);
+            Point newPos = new Point(pos.X + offset.X, pos.Y + offset.Y);
+            if(newPos.X < 0)
+            {
+                newPos.X = 0;
+            }
+            else if(newPos.X + width > fieldSize.Width)
+            {
+                newPos.X = fieldSize.Width - width;
+            }
+            if(newPos.Y + height > fieldSize.Height)
+            {
+                newPos.Y = fieldSize.Height - height;
+            }
+            pos = newPos;
         }
     }
 }
