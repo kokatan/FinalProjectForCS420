@@ -22,6 +22,7 @@ namespace FinalProject420
         private void Form1_Load(object sender, EventArgs e)
         {
             blockList = new List<Block>();
+            AddBlock();
 
 
         }
@@ -36,6 +37,16 @@ namespace FinalProject420
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
+            if(blockList.Count > 0)
+            {
+                Block lastBlock = blockList.Last();
+                lastBlock.Update(pictureBox1.Height);
+
+                if (lastBlock.isFalled)
+                {
+                    AddBlock();
+                }
+            }
             foreach (Block b in blockList)
             {
                 b.Update(pictureBox1.Height);
@@ -48,46 +59,43 @@ namespace FinalProject420
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddBlock()
         {
-            Block b = new I_Block();
-            blockList.Add(b);
+            Block newBlock = null;
+            Random rand = new Random();
+            switch (rand.Next(7))
+            {
+                case 0:
+                    newBlock = new I_Block();
+                    break;
+
+                case 1:
+                    newBlock = new J_Block();
+                    break;
+
+                case 2:
+                    newBlock = new L_Block();
+                    break;
+
+                case 3:
+                    newBlock = new O_Block();
+                    break;
+
+                case 4:
+                    newBlock = new S_Block();
+                    break;
+
+                case 5:
+                    newBlock = new Z_Block();
+                    break;
+
+                case 6:
+                    newBlock = new T_Block();
+                    break;
+
+            }
+            blockList.Add(newBlock);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Block b = new J_Block();
-            blockList.Add(b);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Block b = new L_Block();
-            blockList.Add(b);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Block b = new O_Block();
-            blockList.Add(b);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Block b = new S_Block();
-            blockList.Add(b);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Block b = new Z_Block();
-            blockList.Add(b);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Block b = new T_Block();
-            blockList.Add(b);
-        }
     }
 }
