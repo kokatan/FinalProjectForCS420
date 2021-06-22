@@ -97,5 +97,29 @@ namespace FinalProject420
             blockList.Add(newBlock);
         }
 
+        [System.Security.Permissions.UIPermission(
+        System.Security.Permissions.SecurityAction.Demand,
+        Window = System.Security.Permissions.UIPermissionWindow.AllWindows)]
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if(blockList.Count > 0)
+            {
+                Block lastBlock = blockList.Last();
+                if((keyData & Keys.KeyCode) == Keys.Down)
+                {
+                    lastBlock.Move(new Point(0, 10));
+                }
+                else if ((keyData & Keys.KeyCode) == Keys.Left)
+                {
+                    lastBlock.Move(new Point(-10, 0));
+                }
+                else if ((keyData & Keys.KeyCode) == Keys.Right)
+                {
+                    lastBlock.Move(new Point(10, 10));
+                }
+        
+            }
+            return base.ProcessDialogKey(keyData);
+        }
     }
 }

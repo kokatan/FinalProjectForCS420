@@ -49,5 +49,10 @@ namespace FinalProject420
 
 
         }
+
+        public void Move(Point offset)
+        {
+            pos = new Point(pos.X + offset.X, pos.Y + offset.Y);
+        }
     }
 }
