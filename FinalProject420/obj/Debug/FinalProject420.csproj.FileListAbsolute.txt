@@ -1,0 +1,10 @@
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\bin\Debug\FinalProject420.exe.config
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\bin\Debug\FinalProject420.exe
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\bin\Debug\FinalProject420.pdb
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.csproj.AssemblyReference.cache
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.Form1.resources
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.Properties.Resources.resources
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.csproj.GenerateResource.cache
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.csproj.CoreCompileInputs.cache
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.exe
+C:\Users\kouni\source\repos\FinalProject420\FinalProject420\obj\Debug\FinalProject420.pdb
